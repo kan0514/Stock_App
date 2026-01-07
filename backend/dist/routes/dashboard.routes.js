@@ -1,9 +1,15 @@
 "use strict";
-// file: src/routes/dashboard.routes.ts
 Object.defineProperty(exports, "__esModule", { value: true });
 const express_1 = require("express");
-const auth_middleware_1 = require("../middleware/auth.middleware");
-const dashboard_controller_1 = require("../controllers/dashboard.controller");
+const portfolio_service_1 = require("../services/portfolio.service");
 const router = (0, express_1.Router)();
-router.get("/dashboard", auth_middleware_1.authMiddleware, dashboard_controller_1.getDashboard);
+router.get("/dashboard", async (_, res) => {
+    try {
+        const data = await (0, portfolio_service_1.getPortfolio)();
+        res.json(data);
+    }
+    catch (error) {
+        res.status(500).json({ message: "Failed to load portfolio" });
+    }
+});
 exports.default = router;

@@ -1,79 +1,73 @@
-# 💰 Personal Finance Dashboard
+📊 Stock Portfolio Dashboard (Full Stack)
 
-A comprehensive web application designed to help users effectively manage their personal finances, track spending, set budgets, and gain visual insights into their financial health.
+A full-stack stock portfolio dashboard with real-time data updates every 15 seconds, built using Next.js, Node.js, Express, and TypeScript.
 
-## ✨ Features
+🛠 Tech Stack
 
-The Personal Finance Dashboard provides a rich set of features for streamlined financial management:
+Frontend
 
-### Dashboard Overview
-* **Total Financial Snapshot:** Display of total available balance and the overall count of recorded transactions.
-* **Monthly Performance:** Calculation of the total spend for the current calendar month.
-* **Budget Tracking:** Real-time comparison of the current month's spending against the set monthly budget, including percentage usage.
-* **Visual Insights:** An intuitive chart powered by D3.js providing a visual overview of spending patterns.
+Next.js
 
-### Transaction Management
-* **Recent Activity:** View a list of the most recent transactions.
-* **Filtering (Planned):** Future capability to filter transactions by category, date range, and amount.
+TypeScript
 
-### Budget Management
-* **Goal Setting:** Ability to set and view monthly budget goals.
-* **Usage Tracking:** Clear visualization of the percentage of the budget utilized.
+Tailwind CSS
 
-### Technology & Design
-* **Data Visualization:** Custom, insightful charts implemented using **D3.js**.
-* **Responsive UI:** A simple, clean, and modern user interface built with **React** and **Tailwind CSS**, ensuring an optimal experience on both **mobile and desktop** devices.
+Backend
 
----
+Node.js
 
-## 🛠️ Tech Stack
+Express
 
-| Component | Technology | Description |
-| :--- | :--- | :--- |
-| **Frontend** | React, TypeScript, Tailwind CSS | Modern, component-based UI framework for a robust and scalable client. |
-| **Charts** | D3.js | Powerful library for producing dynamic and interactive data visualizations. |
-| **Backend** | Node.js, Express | Fast, scalable server-side environment and a robust web framework. |
-| **Database** | PostgreSQL, Prisma ORM | Enterprise-grade relational database and a modern database toolkit for type-safe data access. |
-| **Authentication** | JWT (JSON Web Tokens) | Secure, stateless authentication for API access. |
+TypeScript
 
----
+Yahoo Finance & Google Finance (data source)
 
-## 🚀 API Endpoints
+In-memory caching
 
-The backend is structured around the following key API endpoints:
+⚡ Features
 
-### Transactions
-| Method | Endpoint | Description |
-| :--- | :--- | :--- |
-| `GET` | `/transactions/summary` | Retrieves the overall total balance and transaction count. |
-| `GET` | `/transactions` | Retrieves a paginated list of all transactions. |
+Live stock data (CMP, P/E, Market Cap)
 
-**Example Response: `/transactions/summary`**
-```json
-{
-  "totalBalance": 150000.50,
-  "transactionCount": 125
-}
-Example Query & Response: /transactions?page=1&perPage=5JSON{
-  "meta": {
-    "total": 125,
-    "page": 1,
-    "perPage": 5,
-    "totalPages": 25
-  },
-  "data": [
-    // ... transaction objects
-  ]
-}
-BudgetsMethodEndpointDescriptionGET/budgetsRetrieves a budget for a specified month/year (?month=<number>&year=<number>).POST/budgetsCreates a new monthly budget.Example Request Body: POST /budgetsJSON{
-  "month": 11,
-  "year": 2025,
-  "amount": 50000
-}
-⚙️ Setup and InstallationFollow these steps to get the application running on your local machine.1. Clone the RepositoryBashgit clone <repo-url>
-cd personal-finance-dashboard
-2. Install DependenciesInstall packages for both the frontend (Next.js) and the backend.Bashnpm install
-3. Environment ConfigurationCreate a .env file in the project root based on a provided template (if available) and configure your:Database Credentials (for PostgreSQL)JWT Secret Key (for authentication)4. Run Database MigrationsApply the Prisma schema to your PostgreSQL database.Bashnpx prisma migrate dev
-5. Start the ServersRun the backend API and the frontend Next.js server concurrently.Start Backend Server (Node.js/Express):Bashnpm run dev
-Start Frontend Server (Next.js/React):Bashnpm run dev
-The application will typically be accessible at http://localhost:3000.📝 NotesCurrency: All financial amounts within the application are denominated in ₹ (Indian Rupees - INR).Monthly Spend: The calculated monthly spend strictly accounts for expenses incurred within the current calendar month.
+Auto refresh every 15 seconds
+
+Profit / Loss calculations
+
+Backend-driven data (no frontend scraping)
+
+Clean, responsive UI
+
+📂 Project Structure
+frontend/   # Next.js + Tailwind UI
+backend/    # Node.js + Express APIs
+
+▶️ How to Run
+Backend
+cd backend
+npm install
+npm run dev
+
+
+Runs on: http://localhost:4000
+
+Frontend
+cd frontend
+npm install
+npm run dev
+
+
+Runs on: http://localhost:3000
+
+🔄 Data Flow
+
+Frontend → Backend API → External Finance Sources
+Backend caches data → Frontend auto-refreshes every 15s
+
+👨‍💻 Author
+
+Kanishk Sugandhi
+
+✅ Status
+
+✔ Frontend working
+✔ Backend working
+✔ Live updates enabled
