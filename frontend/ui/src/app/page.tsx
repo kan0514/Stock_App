@@ -1,34 +1,41 @@
 "use client";
-import { useRouter } from "next/navigation";
 
-export default function Home() {
-  const router = useRouter();
+import { useEffect, useState } from "react";
+import { fetchPortfolio } from "@/services/portfolio.api";
+import { PortfolioRow } from "@/types/portfolio";
+import PortfolioTable from "@/components/PortfolioTable";
+import Loader from "@/components/Loader";
+
+export default function DashboardPage() {
+  const [data, setData] = useState<PortfolioRow[]>([]);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState<string | null>(null);
+
+  async function loadData() {
+    try {
+      setError(null);
+      const res = await fetchPortfolio();
+      setData(res);
+    } catch {
+      setError("Failed to load portfolio data");
+    } finally {
+      setLoading(false);
+    }
+  }
+
+  useEffect(() => {
+    loadData();
+    const interval = setInterval(loadData, 15000);
+    return () => clearInterval(interval);
+  }, []);
+
+  if (loading) return <Loader />;
+  if (error) return <p className="text-red-500">{error}</p>;
 
   return (
-    <div className="min-h-screen flex flex-col items-center justify-center bg-gray-100">
-      <h1 className="text-4xl font-bold mb-6 text-blue-600">
-        Personal Budget Tracker
-      </h1>
-
-      <p className="mb-6 text-gray-700">
-        Track income, expenses and budgets easily.
-      </p>
-
-      <div className="flex gap-4">
-        <button
-          onClick={() => router.push("/login")}
-          className="px-4 py-2 rounded bg-blue-600 text-white"
-        >
-          Login
-        </button>
-
-        <button
-          onClick={() => router.push("/register")}
-          className="px-4 py-2 rounded border"
-        >
-          Register
-        </button>
-      </div>
-    </div>
+    <main className="p-6 max-w-7xl mx-auto">
+      <h1 className="text-2xl font-bold mb-6">📊 Portfolio Dashboard</h1>
+      <PortfolioTable data={data} />
+    </main>
   );
 }

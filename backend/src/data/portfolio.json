@@ -1,0 +1,16 @@
+[
+  {
+    "symbol": "TCS",
+    "exchange": "NSE",
+    "purchasePrice": 3200,
+    "quantity": 10,
+    "sector": "IT"
+  },
+  {
+    "symbol": "INFY",
+    "exchange": "NSE",
+    "purchasePrice": 1400,
+    "quantity": 20,
+    "sector": "IT"
+  }
+]

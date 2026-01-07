@@ -1,36 +1,161 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+📊 Portfolio Dashboard – Frontend
 
-## Getting Started
+A responsive stock portfolio dashboard built using Next.js, TypeScript, and Tailwind CSS.
+The application displays real-time portfolio data with automatic updates every 15 seconds, consuming data securely from a backend API.
 
-First, run the development server:
+🚀 Tech Stack
 
-```bash
+Framework: Next.js (App Router)
+
+Language: TypeScript
+
+Styling: Tailwind CSS
+
+State Management: React Hooks
+
+Data Fetching: Fetch API with polling
+
+Deployment Ready: Vercel / Netlify
+
+✨ Features
+
+📈 Live portfolio data auto-refresh (every 15 seconds)
+
+🟢 Profit / 🔴 Loss color indicators
+
+💰 Real-time calculations:
+
+Investment value
+
+Current value
+
+Gain / Loss
+
+Gain / Loss percentage
+
+📱 Fully responsive layout
+
+⚡ Optimized re-renders
+
+🔐 No direct external API exposure (backend driven)
+
+🧩 Data Displayed
+
+Each stock entry includes:
+
+Stock Symbol
+
+Purchase Price
+
+Quantity
+
+CMP (Current Market Price)
+
+Investment Value
+
+Present Value
+
+Gain / Loss
+
+Gain / Loss Percentage
+
+P/E Ratio
+
+🔄 Auto Refresh Logic
+
+Portfolio data is fetched from the backend every 15 seconds
+
+Ensures near real-time price updates
+
+Backend caching prevents unnecessary external API calls
+
+📂 Project Structure
+src/
+ ├── app/
+ │   └── page.tsx          # Main dashboard page
+ ├── components/
+ │   ├── PortfolioTable.tsx
+ │   └── Loader.tsx
+ ├── services/
+ │   └── portfolio.api.ts  # Backend API calls
+ ├── types/
+ │   └── portfolio.ts
+ └── styles/
+     └── globals.css
+
+⚙️ Setup & Installation
+1️⃣ Clone the Repository
+git clone https://github.com/your-username/portfolio-frontend.git
+cd portfolio-frontend
+
+2️⃣ Install Dependencies
+npm install
+
+3️⃣ Environment Variables
+
+Create a .env.local file:
+
+NEXT_PUBLIC_API_BASE_URL=http://localhost:4000
+
+
+⚠️ The frontend communicates only with the backend API.
+
+4️⃣ Run the Development Server
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+Open:
+👉 http://localhost:3000
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+🧪 Backend Dependency
 
-## Learn More
+This frontend requires the backend service to be running.
 
-To learn more about Next.js, take a look at the following resources:
+Backend Responsibilities:
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+Fetch CMP from Yahoo Finance
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+Fetch P/E Ratio & Earnings from Google Finance
 
-## Deploy on Vercel
+Cache responses (15 sec)
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+Expose a secure REST API
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+🎨 UI/UX Highlights
+
+Clean, minimal dashboard layout
+
+Color-coded profit and loss
+
+Mobile-friendly table rendering
+
+Smooth updates without flicker
+
+🔒 Security Considerations
+
+No API keys or scraping logic in frontend
+
+Environment-based backend URLs
+
+No exposure of external financial sources
+
+📌 Future Enhancements (Optional)
+
+📊 Charts for portfolio performance
+
+🏷 Sector-wise grouping
+
+🔍 Search & filters
+
+🔔 WebSocket-based real-time updates
+
+🧑‍💻 Author
+
+Kanishk Sugandhi
+Full-Stack Developer (MERN / Next.js)
+
+✅ Status
+
+✔ Frontend complete
+✔ Live updates working
+✔ Production-ready

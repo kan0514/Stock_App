@@ -1,11 +1,15 @@
-// file: src/routes/dashboard.routes.ts
-
 import { Router } from "express";
-import { authMiddleware } from "../middleware/auth.middleware";
-import { getDashboard } from "../controllers/dashboard.controller";
+import { getPortfolio } from "../services/portfolio.service";
 
 const router = Router();
 
-router.get("/dashboard", authMiddleware, getDashboard);
+router.get("/dashboard", async (_, res) => {
+  try {
+    const data = await getPortfolio();
+    res.json(data);
+  } catch (error) {
+    res.status(500).json({ message: "Failed to load portfolio" });
+  }
+});
 
 export default router;
